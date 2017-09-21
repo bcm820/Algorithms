@@ -1,3 +1,5 @@
+// DATE: 9/20/17
+
 // INSTRUCTIONS:
 // Threes and Fives (2nd Challenge)
 // Add and log all the values with a custom range of numbers

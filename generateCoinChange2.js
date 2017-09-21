@@ -1,3 +1,5 @@
+// DATE: 9/20/17
+
 // INSTRUCTIONS:
 // Generate Coin Change (only whole numbers!)
 // Implement a function that accepts a parameter for

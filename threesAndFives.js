@@ -1,3 +1,5 @@
+// DATE: 9/19/17
+
 // INSTRUCTIONS:
 // Threes and Fives
 // Add and log all the values from 100 and 4,000,000
