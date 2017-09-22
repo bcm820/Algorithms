@@ -1,3 +1,5 @@
+// NOTE: Study Dan's #2 solution
+
 // DATE: 9/20/17
 
 // INSTRUCTIONS:
