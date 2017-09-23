@@ -29,4 +29,7 @@ function threesAndFives(x,y){
     console.log(sum);
 }
 
+threesAndFives(100, 4000)
+
+
 // APPROACH BY DAN OOSTRA (CODING DOJO):
