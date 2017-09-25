@@ -34,6 +34,7 @@ function sumToOne(num){
         arr.pop();
     }
     if (num > 9){
+        console.log("RECURSION");
         sumToOne(num);
     }
     else{
