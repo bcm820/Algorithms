@@ -34,7 +34,6 @@ function sumToOne(num){
         arr.pop();
     }
     if (num > 9){
-        console.log("RECURSION");
         sumToOne(num);
     }
     else{
@@ -47,4 +46,25 @@ function sumToOne(num){
 
 function sumToOne(num){
     console.log( (num-1) % 9) + 1;
+}
+
+
+// OTHER APPROACH BY DAN
+
+function sumToOneDigit(num){
+  if (num < 1)    {   return 0;   }
+  num = Math.floor(num);
+  while (num >= 10)
+  {
+    while (num)
+    {
+      var digitSum;
+      var onesDigit = num % 10;
+      num -= onesDigit;
+      num /= 10;
+      digitSum += onesDigit;
+    }
+    num = digitSum;
+  }
+  console.log(num)
 }
