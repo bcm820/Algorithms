@@ -7,10 +7,10 @@
 
 // 10/5: No temp array, only 2 loops
 function rotateArr(arr, off){
-    for (var i = arr.length - 1; i >= 0; i--){
+    for (var i = arr.length - 1; i >= 0; i--){ // start @ end, FOR to shift R
         arr[i + off] = arr[i];
     }
-    for (var x = off - 1; x >= 0; x--){
+    for (var x = off - 1; x >= 0; x--){ // start at offset-1, overwrite to L and pop
         arr[x] = arr[arr.length-1];
         arr.pop();
     }
