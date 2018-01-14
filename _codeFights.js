@@ -43,23 +43,19 @@ function firstNotRepeatingCharacter(s) {
 
 /* rotateImage
 You are given an n x n 2D matrix that represents an image. Rotate the image by 90 degrees (clockwise).
+I couldn't get this one, but found this to be the most simple solution, irregardless of performance.
 */
 
 function rotateImage(a) {
-    // get rows
-    let x = a.length - 1;
-    // iterate through one of four quadrants
-    for (let i = 0; i < x / 2; i++){
-        // ???
-        let last = x - i;
-        // 
-        for (let j = i; j < last; j++){      
-            let temp = a[i][j];
-            a[i][j] = a[x-j][i];
-            a[x-j][i] = a[x-i][x-j];
-            a[x-i][x-j] = a[j][x-i];
-            a[j][x-i] = temp;
-        }
+  let n = a.length - 1;
+  // for starting with last row...
+  for (let row = n; row >= 0; row--) {
+    // starting with first elem...
+    for (let col = 0; col <= n; col++) {
+      // remove (shift) elem and push to new col
+      let item = a[row].shift();
+      a[col].push(item);
     }
-    return a;
+  }
+  return a;
 }
