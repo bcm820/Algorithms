@@ -62,7 +62,38 @@ function rotateImage(a) {
 
 /* sudoku2
 Sudoku is a number-placement puzzle.
-The objective is to fill a 9 × 9 grid with numbers in such a way that each column, each row
-and each of the nine 3 × 3 sub-grids that compose the grid all contain all of the numbers from 1 to 9 one time.
+Fill a 9 × 9 grid with numbers in such a way that each column, each row
+and each of the nine 3 × 3 sub-grids that compose the grid
+all contain all of the numbers from 1 to 9 one time.
 */
 
+function sudoku2(grid) {
+    
+  let duplicates = arr => {
+    return (new Set(arr)).size !== arr.length
+  }
+  
+  let valid = (x, y, rows = 3, cols = 3) => {
+    let items = []
+    for (let i = 0; i < rows; i++) {
+        for (let j = 0; j < cols; j++) {
+            if (grid[i+x][j+y] !== '.') items.push(grid[i+x][j+y])
+        }
+    }
+    if (duplicates(items)) return false
+    return true
+  }
+  
+  for (let i = 0; i < 9; i++) {
+    if (!valid(i, 0, 1, 9)) return false
+    if (!valid(0, i, 9, 1)) return false
+  }
+  
+  for (let i = 0; i < 9; i += 3) {
+    for (let j = 0; j < 9; j += 3) {
+        if (!valid(i, j)) return false
+    }
+  }
+  
+  return true;
+}
