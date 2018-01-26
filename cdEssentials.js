@@ -34,11 +34,8 @@ function gSum(n) {
  */
 
 function rSum(n) {
-  if (n === 1) {
-    return 1;
-  } else {
-    return rSum(n-1) + n;
-  }
+  if (n === 1) return 1;
+  return rSum(n-1) + n;
 }
 
 /*
@@ -65,11 +62,8 @@ function iFactorial(n) {
  */
 
 function rFactorial(n) {
-  if (n === 1) {
-    return 1;
-  } else {
+    if (n === 1) return 1;
     return rFactorial(n-1) * n;
-  }
 }
 
 /*
@@ -85,8 +79,8 @@ function rFactorial(n) {
  */
 
 function iFibonacci(n) {
-    if(n === 0) return 0
-    if(n === 1 || 2) return 1
+    if (n === 0) return 0
+    if (n === 1 || 2) return 1
     let pre = 1, cur = 1
     for (let i = 3; i <= n; i++) {
         [pre, cur] = [cur, pre + cur]
@@ -94,3 +88,13 @@ function iFibonacci(n) {
     return cur
 }
 
+/*
+ * rFibonacci
+ * Now solve it recursively.
+ */
+
+function rFibonacci(n) {
+    if (n === 0) return 0
+    else if (n < 2) return 1
+    return rFibonacci(n - 2) + rFibonacci(n - 1)
+}
