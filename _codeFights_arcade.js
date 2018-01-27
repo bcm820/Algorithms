@@ -118,7 +118,7 @@ function isLucky(n) {
 
 function sortByHeight(a) {
     if (a.indexOf(-1) === -1) {
-        return a.sort(function(a, b){return a-b})
+        return a.sort((a, b) => {return a-b})
     }
     let idxs = []
     let ppl = []
@@ -144,4 +144,58 @@ function sortByHeight(a) {
   return r
 }
 */
+
+function reverseParentheses(s) {
+    const reverse = (sub) => [...sub].reverse().join('');
+    while (s.includes('(')) {
+        
+        let leftP = s.lastIndexOf('(');
+        let rightP = s.indexOf(')', leftP);
+        
+        let leftSub = s.slice(0, leftP)
+        let innerSub = reverse(s.slice(leftP + 1, rightP))
+        let rightSub = s.slice(rightP + 1)
+
+        s = leftSub + innerSub + rightSub
+        
+    }
+    return s;
+}
+
+function alternatingSums(a) {
+    let b = 0
+    let c = 0
+    let toggle = true
+    for (let i = 0; i < a.length; i++) {
+        if (toggle) {
+            b += a[i]
+            toggle = false
+        } else {
+            c += a[i]
+            toggle = true
+        }
+    }
+    return [b, c]
+}
+
+function addBorder(pic) {
+    let w = "*".repeat(pic[0].length + 2)
+    return [w, ...pic.map(el => `*${el}*`), w]
+}
+
+function areSimilar(a, b) {
+    let swap = []
+    for (let i = 0; i < a.length; i++) {
+        if (a[i] !== b[i]) {
+            swap.push(i)
+        }
+    }
+    if (swap.length === 2)
+      [b[swap[0]], b[swap[1]]] = [b[swap[1]], b[swap[0]]]
+    else if (swap.length > 2) return false
+    for (let i = 0; i < a.length; i++) {
+      if (a[i] !== b[i]) return false
+    }
+    return true
+}
 
