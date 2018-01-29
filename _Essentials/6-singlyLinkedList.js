@@ -7,10 +7,12 @@ class Node {
 }
 
 class LinkedList {
+
     constructor() {
         this.head = null
         this.count = 0
     }
+
     insert(value) {
         if (!this.head) this.head = new Node(value)
         else {
@@ -21,6 +23,7 @@ class LinkedList {
         this.count++
         return this
     }
+
     removeLast() {
         if (!this.head) return null
         else {
@@ -32,6 +35,7 @@ class LinkedList {
             return node
         }
     }
+
     removeFront() {
         if (!this.head) return null
         else if (this.head.next) {
@@ -47,6 +51,7 @@ class LinkedList {
             return node
         }
     }
+
     remove(value) {
         if (!this.head) return null
         else {
@@ -68,6 +73,7 @@ class LinkedList {
             return this
         }
     }
+
     display() {
         if (!this.head) return this
         else {
@@ -82,6 +88,7 @@ class LinkedList {
         }
         return this
     }
+
     findMax() {
         if (!this.head) return null
         else {
@@ -98,6 +105,7 @@ class LinkedList {
             return null
         }
     }
+
     findMin() {
         if (!this.head) return null
         else {
@@ -114,6 +122,7 @@ class LinkedList {
             return null
         }
     }
+    
     toArray() {
         if (!this.head) return []
         else {
