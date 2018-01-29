@@ -41,6 +41,7 @@ class BST {
         values.forEach(value => {
             this.insert(value)
         })
+        return this
     }
 
     size() {
@@ -116,32 +117,90 @@ class BST {
         return rFind(this.root)
     }
 
+    findParent(value) {
+        if (!this.root) return null
+        let parent
+        let rFind = node => {
+            switch (true) {
+                case (node.left && node.left.value === value):
+                    parent = node
+                    break
+                case (node.right && node.right.value === value):
+                    parent = node
+                    break
+                case (node.left && node.value > value): rFind(node.left)
+                case (node.right && node.value < value): rFind(node.right)
+            }
+        }
+        rFind(this.root)
+        return parent
+    }
+
+    findMin(node = this.root) {
+        let min = node
+        while (min.left) min = min.left
+        return min
+    }
+
+    findMax(node = this.root) {
+        let max = node
+        while (max.right) max = max.right
+        return max
+    }
+
     remove(value) {
         const node = this.find(value)
         if (!node) return null
         if (node.left && node.right) {
-            /*
-            * If the node to be removed has both left and right children,
-            * replace the node's value by the minimum value of the right
-            * sub-tree, and remove the leave containing the value
-            */
+            const replacement = this.findMin(node.right)
+            this.remove(replacement.value)
+            node.value = replacement.value
+        } else {
+            const parent = this.findParent(value)
+            switch (true) {
+                case value < parent.value:
+                    if (node.left) parent.left = node.left
+                    else parent.left = null
+                    break
+                case value > parent.value:
+                    if (node.right) parent.right = node.right
+                    else parent.right = null
+                    break
+            }
         }
     }
 
-    inOrder() {
-        //
+    preOrder() {
+        if (!this.root) return this
+        const rPreOrder = node => {
+            console.log(node.value)
+            if (node.left) rPreOrder(node.left)
+            if (node.right) rPreOrder(node.right)
+        }
+        rPreOrder(this.root)
+        return this
     }
 
-    preOrder() {
-        //
+    inOrder() {
+        if (!this.root) return
+        const rInOrder = node => {
+            if (node.left) rInOrder(node.left)
+            console.log(node.value)
+            if (node.right) rInOrder(node.right)
+        }
+        rInOrder(this.root)
+        return this
     }
 
     postOrder() {
-        //
+        if (!this.root) return
+        const rPostOrder = node => {
+            if (node.left) rPostOrder(node.left)
+            if (node.right) rPostOrder(node.right)
+            console.log(node.value)
+        }
+        rPostOrder(this.root)
+        return this
     }
 
 }
-
-let bst = new BST()
-bst.insert(10).insert(20).insert(30).insert(40).insert(50)
-bst.insertMany(2, 3, 11, 14, 18, 21, 23, 51, 52, 53, 54, 55)
